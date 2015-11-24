@@ -191,14 +191,14 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                   <% if (rs2.getString("status").equals("sent")){ %>verzonden<%}%>
                   </td>
                   <td style="color:black;"><%=rs2.getString("reg_date").substring(0,16)%></td>
-                  <td style="color:black;"><a href="/zendu/documentservlet?docid=<%=rs2.getInt("id")%>&doctype=brieven" target="_blank"><img src="/zendu/assets/img/ico_pdf.png" height=20px width=20px/></a></td>
+                  <td style="color:black;"><a href="documentservlet?docid=<%=rs2.getInt("id")%>&doctype=brieven" target="_blank"><img src="assets/img/ico_pdf.png" height=30px width=30px/></a></td>
                   <td style="color:black;">
                   <% if (rs2.getString("status").equals("sent")){ %>
                   <%=rs2.getString("sent_date").substring(0,16)%>
                   <%}%>
                   </td>
                   <%if("sent".equals(rs2.getString("status"))){%>
-                    <td style="color:black;"><a href="/zendu/documentservlet?docid=<%=rs2.getInt("id")%>&doctype=bewijs" target="_blank"><img src="/zendu/assets/img/ico_pdf.png" height=20px width=20px/></a></td>
+                    <td style="color:black;"><a href="documentservlet?docid=<%=rs2.getInt("id")%>&doctype=bewijs" target="_blank"><img src="assets/img/ico_pdf.png" height=30px width=30px/></a></td>
                   <%}else{%>
                     <td></td>
                   <%}%>
