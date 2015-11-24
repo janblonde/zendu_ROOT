@@ -147,7 +147,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                   <td style="color:black;"><%=rs2.getString("title")%></td>
                   <td style="color:black;"><%=rs2.getString("amount")%></td>
                   <td style="color:black;"><%=rs2.getString("reg_date").substring(0,16)%></td>
-                  <td style="color:black;"><a href="/zendu/documentservlet?docid=<%=rs2.getInt("id")%>&doctype=factuur" target="_blank"><img src="/zendu/assets/img/ico_pdf.png" height=20px width=20px/></a></td>   
+                  <td style="color:black;"><a href="documentservlet?docid=<%=rs2.getInt("id")%>&doctype=factuur" target="_blank"><img src="assets/img/ico_pdf.png" height=30px width=30px/></a></td>   
                 </tr>
             <%}%>
             </tbody>
