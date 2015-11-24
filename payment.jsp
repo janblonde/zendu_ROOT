@@ -138,7 +138,7 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
         <div class="intro-content" style="top:150px;">
 
 
-<FORM id="paymentform" METHOD="post" ACTION="https://test.docdatapayments.com/ps/menu" id=form1 name=form1>
+<FORM id="paymentform" METHOD="post" ACTION="https://secure.docdatapayments.com/ps/menu" id=form1 name=form1>
 <INPUT type="hidden" NAME="payment_cluster_key" value="<%=SOAPresponse%>">
 <INPUT type="hidden" NAME="merchant_name" VALUE="zendu_be">
 <% if ("letters".equals(returnPage)){ %>
