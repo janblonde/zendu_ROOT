@@ -142,12 +142,12 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
 <INPUT type="hidden" NAME="payment_cluster_key" value="<%=SOAPresponse%>">
 <INPUT type="hidden" NAME="merchant_name" VALUE="zendu_be">
 <% if ("letters".equals(returnPage)){ %>
-  <INPUT type="hidden" NAME="return_url_success" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp?orderID=<%=orderRef%>">
+  <INPUT type="hidden" NAME="return_url_success" VALUE="https://www.zendu.be/success.jsp?orderID=<%=orderRef%>">
 <%}else{ %>
-  <INPUT type="hidden" NAME="return_url_success" VALUE="http://java-tomcat-janblonde.c9.io/zendu/credits.jsp">
+  <INPUT type="hidden" NAME="return_url_success" VALUE="https://www.zendu.be/credits.jsp">
 <%}%>
-<INPUT type="hidden" NAME="return_url_canceled" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
-<INPUT type="hidden" NAME="return_url_error" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
+<INPUT type="hidden" NAME="return_url_canceled" VALUE="https://www.zendu.be/success.jsp">
+<INPUT type="hidden" NAME="return_url_error" VALUE="https://www.zendu.be/success.jsp">
 <input type="submit" value="SUBMIT" id="submit2" name="submit2" hidden>
 </form>
             
