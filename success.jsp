@@ -63,7 +63,7 @@
     boolean testUser = false;
 
 if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("userid"))) {
-  response.sendRedirect("index.jsp");
+  response.sendRedirect("aangetekende-brief.jsp");
 }else{
     String userid = (String)session.getAttribute("userid");
     naam = (String)session.getAttribute("naam");
@@ -139,7 +139,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                         <a class="page-scroll" href="invoices.jsp">Facturen</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.jsp">Uitloggen</a>
+                        <a class="page-scroll" href="aangetekende-brief.jsp">Uitloggen</a>
                     </li>
                 </ul>
             </div>

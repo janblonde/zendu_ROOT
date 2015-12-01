@@ -65,7 +65,7 @@
     String orderRef = "";
 
 if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("aangetekende-brief.jsp");
 }else{
 
     CreatePaymentRequest.myOrderRef = session.getAttribute("orderref").toString();
@@ -125,7 +125,7 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
                         <a class="page-scroll" href="invoices.jsp"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.jsp"></a>
+                        <a class="page-scroll" href="aangetekende-brief.jsp"></a>
                     </li>
                 </ul>
             </div>

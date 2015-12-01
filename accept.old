@@ -1,12 +1,4 @@
 <%@ page import ="java.sql.*" %>
-<%@ page import ="java.security.*" %>
-<%@ page import ="java.math.*" %>
-<%@ page import ="com.mycompany.myfileupload.CreatePaymentRequest" %>
-<%@ page import ="java.math.BigInteger" %>
-<%@ page import ="java.security.SecureRandom" %>
-<%@ page import ="com.mycompany.myfileupload.Properties" %>
-
-
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=iso-8859-1" pageEncoding="iso-8859-1"%>
 <html lang="en">
@@ -62,64 +54,32 @@
 
 <body id="page-top">
 <%
-    //ResultSet rs2 = null;
-    //String naam = "";
-    String SOAPresponse = "";
-    String orderRef = "";
+    ResultSet rs2 = null;
+    String naam = "";
 
 if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
-    response.sendRedirect("aangetekende-brief.jsp");
-}else{
+%>
+    You are not logged in<br/>
+    <a href="index.html">Log on</a>
+<%}
+else
+{
+    String userid = (String)session.getAttribute("userid");
+    naam = (String)session.getAttribute("naam");
+    
+    String orderID = (String)request.getParameter("orderID");
 
     Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/c9", Properties.username, Properties.password);
-    
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/c9", "janblonde", "");
     Statement st = con.createStatement();
-    ResultSet rs1;
-    rs1 = st.executeQuery("select * from Members where email='" + (String)session.getAttribute("userid") + "';");
-    
-    if (rs1.next()){
-        String memberID = rs1.getString("id");
-        String first_name = rs1.getString("first_name");
-        String last_name = rs1.getString("last_name");
-        String email = rs1.getString("email");
-        String streetname = rs1.getString("streetname");
-        String streetnumber = rs1.getString("streetnumber");
-        String zipcode = rs1.getString("zipcode");
-        String city = rs1.getString("city");
+    st.executeUpdate("UPDATE Brieven set status='paid' where id=" + orderID + ";");
 
-        //SecureRandom random = new SecureRandom();
-        //String myRandom = new BigInteger(130, random).toString(6);
-        
-        //orderRef = memberID + random;
-        
-        String SQL = "INSERT INTO CreditLog (member_id, amount, status) VALUES(?,'10','open')";
-        PreparedStatement statement = con.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
-        statement.setString(1,memberID);
-    
-        statement.execute();
-        ResultSet rs2 = statement.getGeneratedKeys();
-                        
-        if(rs2.next()){
-            orderRef = Integer.toString(rs2.getInt(1));
-        }
-
-        CreatePaymentRequest.myOrderRef = "C" + orderRef;
-        CreatePaymentRequest.myClientID = memberID;
-        CreatePaymentRequest.myFirst = first_name;
-        CreatePaymentRequest.myLast = last_name;
-        CreatePaymentRequest.myEmail = email;
-        CreatePaymentRequest.myStreet = streetname;
-        CreatePaymentRequest.myHouseNumber = streetnumber;
-        CreatePaymentRequest.myPostalCode = zipcode;
-        CreatePaymentRequest.myCity = city;
-        CreatePaymentRequest.myAmount = "8800";
-    
-        SOAPresponse = CreatePaymentRequest.makeCall();
-    }
-    
 }%>
 
+
+
+    <!-- Navigation -->
+    <!-- Note: navbar-default and navbar-inverse are both supported with this theme. -->
     <nav class="navbar navbar-inverse navbar-fixed">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -141,16 +101,19 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="profile.jsp"></a>
+                        <a class="page-scroll" href="#about">Welkom <%=naam%></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="credits.jsp"></a>
+                        <a class="page-scroll" href="#process">Profiel</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="invoices.jsp"></a>
+                        <a class="page-scroll" href="#work">Credits</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="aangetekende-brief.jsp"></a>
+                        <a class="page-scroll" href="#pricing">Facturen</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Uitloggen</a>
                     </li>
                 </ul>
             </div>
@@ -158,32 +121,81 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
         </div>
         <!-- /.container -->
     </nav>
-
     <header>
+        
         <div class="intro-content" style="top:150px;">
-
-
-<FORM id="paymentform" METHOD="post" ACTION="https://test.docdatapayments.com/ps/menu" id=form1 name=form1>
-<INPUT type="hidden" NAME="payment_cluster_key" value="<%=SOAPresponse%>">
-<INPUT type="hidden" NAME="merchant_name" VALUE="zendu_be">
-<INPUT type="hidden" NAME="return_url_success" VALUE="http://java-tomcat-janblonde.c9.io/zendu/credits.jsp?order=<%=orderRef%>">
-<INPUT type="hidden" NAME="return_url_canceled" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
-<INPUT type="hidden" NAME="return_url_error" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
-<input type="submit" value="SUBMIT" id="submit2" name="submit2" hidden>
-</form>
-            
+            <h1>Uw betaling en brief werden goed ontvangen - de brief wordt vandaag nog aangetekend verzonden</h1>
         </div>
         
+        <div class="login-form">
+        </div>
+    
+        <div class="getstarted-form">
+        </div>
+    
+    
+        
+        <div class="scroll-down">
+            <a class="btn page-scroll" href="#about"><i class="fa fa-angle-down fa-fw"></i></a>
+        </div>
     </header>
+
+    <footer class="footer" style="background-image: url('assets/img/bg-footer.jpg')">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 contact-details">
+                    <h4><i class="fa fa-phone"></i> Call</h4>
+                    <p>555-213-4567</p>
+                </div>
+                <div class="col-md-4 contact-details">
+                    <h4><i class="fa fa-map-marker"></i> Visit</h4>
+                    <p>3481 Melrose Place
+                        <br>Beverly Hills, CA 90210</p>
+                </div>
+                <div class="col-md-4 contact-details">
+                    <h4><i class="fa fa-envelope"></i> Email</h4>
+                    <p><a href="mailto:mail@example.com">mail@example.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row social">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin fa-fw fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col-lg-12">
+                    <p class="small">&copy; 2015 Start Bootstrap Themes</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Core Scripts -->
     <script src="assets/js/jquery.js"></script>
- 
-    <script>
-    $(document).ready(function(){
-      $("#paymentform").submit();
-    });
-    </script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+    <!-- Plugin Scripts -->
+    <script src="assets/js/plugins/jquery.easing.min.js"></script>
+    <script src="assets/js/plugins/classie.js"></script>
+    <script src="assets/js/plugins/cbpAnimatedHeader.js"></script>
+    <script src="assets/js/plugins/owl-carousel/owl.carousel.js"></script>
+    <script src="assets/js/plugins/jquery.magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/plugins/background/core.js"></script>
+    <script src="assets/js/plugins/background/transition.js"></script>
+    <script src="assets/js/plugins/background/background.js"></script>
+    <script src="assets/js/plugins/jquery.mixitup.js"></script>
+    <script src="assets/js/plugins/wow/wow.min.js"></script>
+    <script src="assets/js/contact_me.js"></script>
+    <script src="assets/js/plugins/jqBootstrapValidation.js"></script>
+    <!-- Vitality Theme Scripts -->
+    <script src="assets/js/vitality.js"></script>
 </body>
 
 </html>
