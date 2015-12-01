@@ -32,6 +32,7 @@ String query="select * from Brieven where status='paid';";
 Connection conn=DriverManager.getConnection(url,username,password);
 Statement stmt=conn.createStatement();
 ResultSet rs=stmt.executeQuery(query);
+session.setAttribute("userid","adminzendu");
 while(rs.next())
 {
 %>
