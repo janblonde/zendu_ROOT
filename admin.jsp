@@ -14,8 +14,20 @@
 <table border="2">
 <tr>
 <td>ID</td>
-<td>LASTNAME</td>
-<td>FIRSTNAME</td>
+<td>NAAR Company</td>
+<td>Lastname</td>
+<td>Firstname</td>
+<td>Streetname</td>
+<td>Number</td>
+<td>Postcode</td>
+<td>Stad</td>
+<td>VAN Company</td>
+<td>Lastname</td>
+<td>Firstname</td>
+<td>Streetname</td>
+<td>Number</td>
+<td>Postcode</td>
+<td>Stad</td>
 <td>STATUS</td>
 <td>BRIEF</td>
 <td>LEAFLET</td>
@@ -37,8 +49,20 @@ while(rs.next())
 {
 %>
     <tr><td><%=rs.getInt("id") %></td>
+        <td><%=rs.getString("destinationCompany") %></td>
         <td><%=rs.getString("destinationLastName") %></td>
         <td><%=rs.getString("destinationFirstName") %></td>
+        <td><%=rs.getString("destinationStreetName") %></td>
+        <td><%=rs.getString("destinationStreetNumber") %></td>
+        <td><%=rs.getString("destinationZipCode") %></td>
+        <td><%=rs.getString("destinationCity") %></td>
+        <td><%=rs.getString("senderCompany") %></td>
+        <td><%=rs.getString("senderLastName") %></td>
+        <td><%=rs.getString("senderFirstName") %></td>
+        <td><%=rs.getString("senderStreetName") %></td>
+        <td><%=rs.getString("senderStreetNumber") %></td>
+        <td><%=rs.getString("senderZipCode") %></td>
+        <td><%=rs.getString("senderCity") %></td>
         <td><%=rs.getString("status") %></td>
         <td><a href="documentservlet?docid=<%=rs.getInt("id")%>&doctype=brieven">Download brief</a></td>
         <td><a href="documentservlet?docid=<%=rs.getInt("id")%>&doctype=bewijs">Download leaflet</a></td>
