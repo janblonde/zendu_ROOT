@@ -5,7 +5,7 @@
 <%@ page import ="com.mycompany.myfileupload.GenerateInvoice" %>
 
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=iso-8859-1" pageEncoding="iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 
 <head>
@@ -153,9 +153,9 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
             <div id="payment_choices" style="position:relative;top:25px;left:350px" hidden>
               <a class="btn btn-lg btn-default" href="payment10.jsp">10 credits: 88 EUR
               </a>
-              <div class="btn btn-lg btn-default" onclick="document.getElementById('paymentform50').submit();">50 credits: 425 EUR
+              <div class="btn btn-lg btn-default" href="payment50.jsp">50 credits: 425 EUR
               </div>
-              <div class="btn btn-lg btn-default" onclick="document.getElementById('paymentform100').submit();">100 credits: 820 EUR
+              <div class="btn btn-lg btn-default" href="payment100.jsp">100 credits: 820 EUR
               </div>
             </div>
             
@@ -201,41 +201,6 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
 
         </div>
         
-        <div class="login-form">
-        <FORM id="paymentform10" METHOD="post" ACTION="https://secure.ogone.com/ncol/test/orderstandard.asp">
-            <INPUT type="hidden" NAME="PSPID" value="zendu">
-            <INPUT type="hidden" NAME="orderID" style="color:black" VALUE="<%=orderID%>">
-            <INPUT type="hidden" NAME="amount" style="color:black" VALUE="8800">
-            <INPUT type="hidden" NAME="currency" style="color:black" VALUE="EUR">
-            <INPUT type="hidden" NAME="language" VALUE="en_US">
-            <INPUT type="hidden" NAME="TITLE" VALUE="PAYMENT">
-            <INPUT type="hidden" NAME="SHASIGN" VALUE="<%= result10 %>">
-            <INPUT type="hidden" NAME="ACCEPTURL" VALUE="https://java-tomcat-janblonde.c9.io/zendu/credits.jsp">
-            <input type="submit" value="SUBMIT" id=submit2 name=submit2 hidden>
-        </FORM>
-        <FORM id="paymentform50" METHOD="post" ACTION="https://secure.ogone.com/ncol/test/orderstandard.asp">
-            <INPUT type="hidden" NAME="PSPID" value="zendu">
-            <INPUT type="hidden" NAME="orderID" style="color:black" VALUE="<%=orderID%>">
-            <INPUT type="hidden" NAME="amount" style="color:black" VALUE="42500">
-            <INPUT type="hidden" NAME="currency" style="color:black" VALUE="EUR">
-            <INPUT type="hidden" NAME="language" VALUE="en_US">
-            <INPUT type="hidden" NAME="TITLE" VALUE="PAYMENT">
-            <INPUT type="hidden" NAME="SHASIGN" VALUE="<%= result50 %>">
-            <INPUT type="hidden" NAME="ACCEPTURL" VALUE="https://java-tomcat-janblonde.c9.io/zendu/credits.jsp">
-            <input type="submit" value="SUBMIT" id=submit2 name=submit2 hidden>
-        </FORM>
-        <FORM id="paymentform100" METHOD="post" ACTION="https://secure.ogone.com/ncol/test/orderstandard.asp">
-            <INPUT type="hidden" NAME="PSPID" value="zendu">
-            <INPUT type="hidden" NAME="orderID" style="color:black" VALUE="<%=orderID%>">
-            <INPUT type="hidden" NAME="amount" style="color:black" VALUE="82000">
-            <INPUT type="hidden" NAME="currency" style="color:black" VALUE="EUR">
-            <INPUT type="hidden" NAME="language" VALUE="en_US">
-            <INPUT type="hidden" NAME="TITLE" VALUE="PAYMENT">
-            <INPUT type="hidden" NAME="SHASIGN" VALUE="<%= result100 %>">
-            <INPUT type="hidden" NAME="ACCEPTURL" VALUE="https://java-tomcat-janblonde.c9.io/zendu/credits.jsp">
-            <input type="submit" value="SUBMIT" id=submit2 name=submit2 hidden>
-        </FORM>
-        </div>
     
         <div class="getstarted-form">
         </div>

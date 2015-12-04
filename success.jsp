@@ -3,7 +3,7 @@
 <%@ page import ="com.mycompany.myfileupload.AmazonSESAttachment" %>
 <%@ page import ="com.mycompany.myfileupload.GenerateInvoice" %>
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=iso-8859-1" pageEncoding="iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 
 <head>

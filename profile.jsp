@@ -1,6 +1,7 @@
 <%@ page import ="java.sql.*" %>
 <%@ page import ="com.mycompany.myfileupload.Properties" %>
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 
 <head>

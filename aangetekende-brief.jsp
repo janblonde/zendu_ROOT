@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="Aangetekende brief verzenden">
+    <meta name="description" content="Aangetekende brief">
     <meta name="author" content="Zendu Aangetekende brieven versturen">
     <title>Zendu | Aangetekende brief verzenden</title>
     <!-- Bootstrap Core CSS -->
@@ -76,7 +76,7 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#aangetekende">Hoe werkt het</a>
+                        <a class="page-scroll" href="#aangetekende brief">Hoe werkt het</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#brief">Starten</a>
@@ -128,7 +128,7 @@
             <a class="btn page-scroll" href="#aangetekende"><i class="fa fa-angle-down fa-fw"></i></a>
         </div>
     </header>
-    <section id="aangetekende">
+    <section id="aangetekende brief">
         <div class="container-fluid">
             <div class="row text-center">
                 <div class="col-lg-12 wow fadeIn">
