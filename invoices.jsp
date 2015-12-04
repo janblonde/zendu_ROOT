@@ -1,7 +1,7 @@
 <%@ page import ="java.sql.*" %>
 <%@ page import ="com.mycompany.myfileupload.Properties" %>
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=iso-8859-1" pageEncoding="iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 
 <head>
@@ -92,7 +92,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+                <a class="navbar-brand page-scroll" href="success.jsp">
                     Zen<span style="color:firebrick">du</span>
                 </a>
             </div>

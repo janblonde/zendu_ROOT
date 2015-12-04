@@ -163,12 +163,13 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
         <div class="intro-content" style="top:150px;">
 
 
-<FORM id="paymentform" METHOD="post" ACTION="https://test.docdatapayments.com/ps/menu" id=form1 name=form1>
+<FORM id="paymentform" METHOD="post" ACTION="https://secure.docdatapayments.com/ps/menu" id=form1 name=form1>
 <INPUT type="hidden" NAME="payment_cluster_key" value="<%=SOAPresponse%>">
 <INPUT type="hidden" NAME="merchant_name" VALUE="zendu_be">
-<INPUT type="hidden" NAME="return_url_success" VALUE="http://java-tomcat-janblonde.c9.io/zendu/credits.jsp?order=<%=orderRef%>">
-<INPUT type="hidden" NAME="return_url_canceled" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
-<INPUT type="hidden" NAME="return_url_error" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
+<INPUT type="hidden" NAME="return_url_success" VALUE="https://www.zendu.be/credits.jsp?order=<%=orderRef%>">
+<!--<INPUT type="hidden" NAME="return_url_success" VALUE="https://java-tomcat-janblonde.c9.io/credits.jsp?order=<%=orderRef%>">-->
+<INPUT type="hidden" NAME="return_url_canceled" VALUE="https://www.zendu.be/credits.jsp">
+<INPUT type="hidden" NAME="return_url_error" VALUE="https://www.zendu.be/credits.jsp">
 <input type="submit" value="SUBMIT" id="submit2" name="submit2" hidden>
 </form>
             
