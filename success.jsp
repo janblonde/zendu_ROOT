@@ -1,6 +1,6 @@
 <%@ page import ="java.sql.*" %>
 <%@ page import ="com.mycompany.myfileupload.Properties" %>
-<%@ page import ="com.mycompany.myfileupload.AmazonSESAttachment" %>
+<%@ page import ="com.mycompany.myfileupload.SendFileEmail" %>
 <%@ page import ="com.mycompany.myfileupload.GenerateInvoice" %>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
@@ -35,6 +35,7 @@
     <link href="assets/css/plugins/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins/background.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins/animate.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/feedback.css" rel="stylesheet" type="text/css">
     <!-- Vitality Theme CSS -->
     <!-- Uncomment the color scheme you want to use. -->
     <link href="assets/css/vitality-red.css" rel="stylesheet" type="text/css">
@@ -78,12 +79,21 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
         successfulPayment = true;
         
         //send e-mail
-        AmazonSESAttachment mailer = new AmazonSESAttachment();
-        mailer.setTO(userid);
-        mailer.setBODY("We verzenden de brief zo snel mogelijk aangetekend. U vindt de door u opgeladen brief als bijlage bij deze e-mail.");
-        mailer.setSUBJECT("Uw brief werd succesvol opgeladen op Zendu.be");
-        mailer.setFileName("brieven"+request.getParameter("orderID")+".pdf");
-        mailer.sendMessage();
+        String UPLOAD_DIRECTORY = com.mycompany.myfileupload.Properties.documentRoot;
+        
+        SendFileEmail myMail = new SendFileEmail();
+        myMail.setMailTo(userid);
+        myMail.setAttachmentName(UPLOAD_DIRECTORY + "brieven"+request.getParameter("orderID")+".pdf");
+        myMail.setSubject("Uw brief werd succesvol opgeladen op zendu.be");
+        myMail.setMessage("We verzenden de brief zo snel mogelijk aangetekend. U vindt de door u opgeladen brief als bijlage bij deze e-mail.");
+        String returnMessage = myMail.getMessage();
+        
+        //AmazonSESAttachment mailer = new AmazonSESAttachment();
+        //mailer.setTO(userid);
+        //mailer.setBODY("We verzenden de brief zo snel mogelijk aangetekend. U vindt de door u opgeladen brief als bijlage bij deze e-mail.");
+        //mailer.setSUBJECT("Uw brief werd succesvol opgeladen op Zendu.be");
+        //mailer.setFileName("brieven"+request.getParameter("orderID")+".pdf");
+        //mailer.sendMessage();
         
         //generate invoice
         GenerateInvoice generator = new GenerateInvoice();
@@ -238,6 +248,22 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
         <div class="scroll-down">
             <a class="btn page-scroll" href="#about"><i class="fa fa-angle-down fa-fw"></i></a>
         </div>
+        
+        <div id="feedback">
+        	<div id="feedback-form" style='display:none;' class="col-xs-4 col-md-4 panel panel-default">
+        		<form method="POST" action="/feedback" class="form panel-body" role="form">
+        			<div class="form-group">
+        				<input class="form-control" name="email" autofocus placeholder="Uw e-mail (optioneel)" type="email" />
+        				<input name="screen" type="hidden" value="success.jsp"/>
+        			</div>
+        			<div class="form-group">
+        				<textarea class="form-control" name="body" required placeholder="Graag uw feedback hier ..." rows="5"></textarea>
+        			</div>
+        			<button class="btn btn-primary pull-right" type="submit">Verzend</button>
+        		</form>
+        	</div>
+        	<div id="feedback-tab">Feedback</div>
+        </div>
     </header>
 
     <footer class="footer" style="background-image: url('assets/img/bg-footer.jpg')">
@@ -249,12 +275,13 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                 </div>
                 <div class="col-md-4 contact-details">
                     <h4><i class="fa fa-map-marker"></i> Visit</h4>
-                    <p>Huybrechtsstraat 76
-                        <br>2140 Borgerhout</p>
+                    <p>BVBA CEEJAY<br>
+                       Huybrechtsstraat 76<br>
+                       2140 Borgerhout</p>
                 </div>
                 <div class="col-md-4 contact-details">
                     <h4><i class="fa fa-envelope"></i> Email</h4>
-                    <p><a href="mailto:mail@example.com">jan@zendu.be</a>
+                    <p><a href="mailto:mail@example.com">info@zendu.be</a>
                     </p>
                 </div>
             </div>
@@ -295,6 +322,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
     <script src="assets/js/plugins/wow/wow.min.js"></script>
     <script src="assets/js/contact_me.js"></script>
     <script src="assets/js/plugins/jqBootstrapValidation.js"></script>
+    <script src="assets/js/feedback.js"></script>
     <!-- Vitality Theme Scripts -->
     <script src="assets/js/vitality.js"></script>
     <%}%>

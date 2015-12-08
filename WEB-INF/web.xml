@@ -32,6 +32,10 @@
         <servlet-name>SavePasswordServlet</servlet-name>
         <servlet-class>com.mycompany.myfileupload.SavePasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedbackServlet</servlet-name>
+        <servlet-class>com.mycompany.myfileupload.FeedbackServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FileUploadHandler</servlet-name>
         <url-pattern>/upload</url-pattern>
@@ -64,6 +68,10 @@
         <servlet-name>SavePasswordServlet</servlet-name>
         <url-pattern>/savepassword</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackServlet</servlet-name>
+        <url-pattern>/feedback</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -74,8 +82,8 @@
     </welcome-file-list>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>A JSP page</web-resource-name>
-            <url-pattern>/admin.jsp</url-pattern>
+            <web-resource-name>Backend pages</web-resource-name>
+            <url-pattern>/backend/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>tomcat</role-name>
