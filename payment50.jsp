@@ -2,6 +2,10 @@
 <%@ page import ="java.security.*" %>
 <%@ page import ="java.math.*" %>
 <%@ page import ="com.mycompany.myfileupload.CreatePaymentRequest" %>
+<%@ page import ="java.math.BigInteger" %>
+<%@ page import ="java.security.SecureRandom" %>
+<%@ page import ="com.mycompany.myfileupload.Properties" %>
+
 
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=iso-8859-1" pageEncoding="iso-8859-1"%>
@@ -61,37 +65,58 @@
     //ResultSet rs2 = null;
     //String naam = "";
     String SOAPresponse = "";
-    String returnPage = "";
     String orderRef = "";
 
 if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
     response.sendRedirect("aangetekende-brief.jsp");
 }else{
 
-    CreatePaymentRequest.myOrderRef = session.getAttribute("orderref").toString();
-    CreatePaymentRequest.myClientID = session.getAttribute("clientid").toString();
-    CreatePaymentRequest.myFirst = (String)session.getAttribute("first");
-    CreatePaymentRequest.myLast = (String)session.getAttribute("last");
-    CreatePaymentRequest.myEmail = (String)session.getAttribute("email");
-    CreatePaymentRequest.myStreet = (String)session.getAttribute("street");
-    CreatePaymentRequest.myHouseNumber = (String)session.getAttribute("housenumber");
-    CreatePaymentRequest.myPostalCode = (String)session.getAttribute("postalcode");
-    CreatePaymentRequest.myCity = (String)session.getAttribute("city");
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/c9", Properties.username, Properties.password);
     
-    SOAPresponse = CreatePaymentRequest.makeCall();
-    returnPage = (String)session.getAttribute("returnpage");
-    orderRef = session.getAttribute("orderref").toString();
+    Statement st = con.createStatement();
+    ResultSet rs1;
+    rs1 = st.executeQuery("select * from Members where email='" + (String)session.getAttribute("userid") + "';");
     
-    session.removeAttribute("orderref");
-    session.removeAttribute("clientid");
-    session.removeAttribute("first");
-    session.removeAttribute("last");
-    session.removeAttribute("email");
-    session.removeAttribute("street");
-    session.removeAttribute("housenumber");
-    session.removeAttribute("postalcode");
-    session.removeAttribute("city");
-    session.removeAttribute("returnpage");
+    if (rs1.next()){
+        String memberID = rs1.getString("id");
+        String first_name = rs1.getString("first_name");
+        String last_name = rs1.getString("last_name");
+        String email = rs1.getString("email");
+        String streetname = rs1.getString("streetname");
+        String streetnumber = rs1.getString("streetnumber");
+        String zipcode = rs1.getString("zipcode");
+        String city = rs1.getString("city");
+
+        //SecureRandom random = new SecureRandom();
+        //String myRandom = new BigInteger(130, random).toString(6);
+        
+        //orderRef = memberID + random;
+        
+        String SQL = "INSERT INTO CreditLog (member_id, amount, status) VALUES(?,'50','open')";
+        PreparedStatement statement = con.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1,memberID);
+    
+        statement.execute();
+        ResultSet rs2 = statement.getGeneratedKeys();
+                        
+        if(rs2.next()){
+            orderRef = Integer.toString(rs2.getInt(1));
+        }
+
+        CreatePaymentRequest.myOrderRef = "C" + orderRef;
+        CreatePaymentRequest.myClientID = memberID;
+        CreatePaymentRequest.myFirst = first_name;
+        CreatePaymentRequest.myLast = last_name;
+        CreatePaymentRequest.myEmail = email;
+        CreatePaymentRequest.myStreet = streetname;
+        CreatePaymentRequest.myHouseNumber = streetnumber;
+        CreatePaymentRequest.myPostalCode = zipcode;
+        CreatePaymentRequest.myCity = city;
+        CreatePaymentRequest.myAmount = "42500";
+    
+        SOAPresponse = CreatePaymentRequest.makeCall();
+    }
     
 }%>
 
@@ -138,16 +163,13 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
         <div class="intro-content" style="top:150px;">
 
 
-<FORM id="paymentform" METHOD="post" ACTION="https://test.docdatapayments.com/ps/menu" id=form1 name=form1>
+<FORM id="paymentform" METHOD="post" ACTION="https://secure.docdatapayments.com/ps/menu" id=form1 name=form1>
 <INPUT type="hidden" NAME="payment_cluster_key" value="<%=SOAPresponse%>">
 <INPUT type="hidden" NAME="merchant_name" VALUE="zendu_be">
-<% if ("letters".equals(returnPage)){ %>
-  <INPUT type="hidden" NAME="return_url_success" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp?orderID=<%=orderRef%>">
-<%}else{ %>
-  <INPUT type="hidden" NAME="return_url_success" VALUE="http://java-tomcat-janblonde.c9.io/zendu/credits.jsp">
-<%}%>
-<INPUT type="hidden" NAME="return_url_canceled" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
-<INPUT type="hidden" NAME="return_url_error" VALUE="http://java-tomcat-janblonde.c9.io/zendu/success.jsp">
+<INPUT type="hidden" NAME="return_url_success" VALUE="https://www.zendu.be/credits.jsp?order=<%=orderRef%>">
+<!--<INPUT type="hidden" NAME="return_url_success" VALUE="https://java-tomcat-janblonde.c9.io/credits.jsp?order=<%=orderRef%>">-->
+<INPUT type="hidden" NAME="return_url_canceled" VALUE="https://www.zendu.be/credits.jsp">
+<INPUT type="hidden" NAME="return_url_error" VALUE="https://www.zendu.be/credits.jsp">
 <input type="submit" value="SUBMIT" id="submit2" name="submit2" hidden>
 </form>
             

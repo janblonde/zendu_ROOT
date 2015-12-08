@@ -19,7 +19,7 @@
 	        session.setAttribute("userid",email);
 	        session.setAttribute("naam", firstName + " " + lastName);
 	        session.setAttribute("loginmessage","");
-	        response.sendRedirect("https://www.zendu.be/success.jsp");
+	        response.sendRedirect("success.jsp");
         }else{
             session.setAttribute("loginmessage", "Dit is een ongeldige email/paswoord combinatie. ");
 	        response.sendRedirect("aangetekende-brief.jsp");

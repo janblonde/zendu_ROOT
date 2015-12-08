@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@page contentType="text/html; charset=UTF-8" %>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -32,6 +32,7 @@
     <link href="assets/css/plugins/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins/background.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins/animate.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/feedback.css" rel="stylesheet" type="text/css">
     <!-- Vitality Theme CSS -->
     <!-- Uncomment the color scheme you want to use. -->
     <link href="assets/css/vitality-red.css" rel="stylesheet" type="text/css">
@@ -127,6 +128,22 @@
         <div class="scroll-down">
             <a class="btn page-scroll" href="#aangetekende"><i class="fa fa-angle-down fa-fw"></i></a>
         </div>
+        
+        <div id="feedback">
+        	<div id="feedback-form" style='display:none;' class="col-xs-4 col-md-4 panel panel-default">
+        		<form method="POST" action="/feedback" class="form panel-body" role="form">
+        			<div class="form-group">
+        				<input class="form-control" name="email" autofocus placeholder="Uw e-mail (optioneel)" type="email" />
+        				<input name="screen" type="hidden" value="aangetekende-brief.jsp"/>
+        			</div>
+        			<div class="form-group">
+        				<textarea class="form-control" name="body" required placeholder="Graag uw feedback hier ..." rows="5"></textarea>
+        			</div>
+        			<button class="btn btn-primary pull-right" type="submit">Verzend</button>
+        		</form>
+        	</div>
+        	<div id="feedback-tab">Feedback</div>
+        </div>
     </header>
     <section id="aangetekende brief">
         <div class="container-fluid">
@@ -140,30 +157,30 @@
             <div class="row text-center content-row">
                 <div class="col-md-3 col-sm-6 wow fadeIn" data-wow-delay=".2s">
                     <div class="about-content">
-                        <i class="fa fa-eye fa-4x"></i>
+                        <i class="fa fa-edit fa-4x"></i>
                         <h3>U schrijft de brief en laadt hem op op de website.</h3>
-                        <p>Opladen is eenvoudig, we aanvaarden brieven in PDF formaat. </p>
+                        <p style="text-align: left;">Opladen kan eenvoudig op de website: de eerste keer gratis, daarna na inloggen met uw e-mail en paswoord. <br>Door te werken met PDF-formaat kunnen we garanderen dat de brief correct wordt afgedrukt.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeIn" data-wow-delay=".4s">
                     <div class="about-content">
-                        <i class="fa fa-edit fa-4x"></i>
+                        <i class="fa fa-rocket fa-4x"></i>
                         <h3>Wij printen uw brief en versturen hem aangetekend via de reguliere post.</h3>
-                        <p>Brieven opgeladen voor 15u00 worden dezelfde werkdag nog verstuurd, na 15u00 de volgende werkdag.</p>
+                        <p style="text-align: left;">Brieven opgeladen voor 15u00 worden dezelfde werkdag nog verstuurd, na 15u00 de volgende werkdag.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeIn" data-wow-delay=".6s">
                     <div class="about-content">
                         <i class="fa fa-tablet fa-4x"></i>
                         <h3>Het verzendingsbewijs is digitaal beschikbaar in uw applicatie.</h3>
-                        <p>Het verzendingsbewijs wordt door ons gearchiveerd en ingescand. Met uw persoonlijk inlog kan u al uw verstuurde brieven en bijhorende verzendingsbewijzen raadplegen.</p>
+                        <p style="text-align: left;">Het verzendingsbewijs wordt door ons gearchiveerd en ingescand. Met uw persoonlijk inlog kan u al uw verstuurde brieven en bijhorende verzendingsbewijzen raadplegen.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeIn" data-wow-delay=".8s">
                     <div class="about-content">
-                        <i class="fa fa-heart fa-4x"></i>
+                        <i class="fa fa-bullhorn fa-4x"></i>
                         <h3>De geadresseerde ontvangt zijn aangetekende brief.</h3>
-                        <p>Op dezelfde manier alsof u de brief zelf naar het postkantoor had gebracht.</p>
+                        <p style="text-align: left;">Op dezelfde manier alsof u de brief zelf naar het postkantoor had gebracht.</p>
                     </div>
                 </div>
             </div>
@@ -173,7 +190,7 @@
         <div class="container wow fadeIn">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <span class="quote">Verzend <span class="text-primary">digitaal.</span> Legale aangetekende brieven. Beheer van de brieven op een eenvoudige manier.</span>
+                    <span class="quote"><span class="text-primary">"Legaal</span> verzenden en beheren van aangetekende brieven was nog nooit zo <span class="text-primary">eenvoudig.</span>"</span>
                     <hr class=" colored">
                     <a class="btn btn-outline-light page-scroll" href="#brief">Gratis starten</a>
                 </div>
@@ -222,10 +239,10 @@
                 <div class="form-group">
                   <input type="email" class="form-control valid" name="destinationEmail" id="destinationEmail" placeholder="E-mail adres" style="width:40%">
                 </div>
-                <legend>Te verzenden document</legend>
+                <legend>Te verzenden brief - laad hier uw PDF document op.</legend>
                 <div class="form-group">
                   <input id="file" name="file" type="file" class="file" accept="application/pdf">
-                  <span class="error"><br>We aanvaarden enkel PDF documenten, omdat we enkel zo kunnen garanderen dat uw opmaak exact behouden blijft.<br>Dus graag uw document eerst opslaan in PDF formaat voor u het oplaadt.</span>
+                  <span class="error"><br>Gelieve een PDF document op te laden<br>Dus graag uw document eerst opslaan in PDF formaat en het dan opladen op de website via bovenstaande knop.</span>
                 </div>
                 <legend>Uw gegevens</legend>
                 <div class="form-group">             
@@ -284,9 +301,9 @@
             <h2>Over ons</h2>
             <hr class="colored">
             <p style="text-align:left">We zijn ervan overtuigd dat het verzenden van aangetekende brieven makkelijker moet kunnen. De verplichte trip naar het postkantoor is tijdrovend en onefficiënt.</p>
-            <p style="text-align:left">Maar ook het beheer van de verstuurde brieven kan beter en vooral eenvoudiger. Het huidig systeem van afgestempelde bewijsstrookjes is achterhaald, omslachtig en werkt fouten in de hand.</p>
+            <p style="text-align:left">Maar ook het beheer van de verstuurde brieven kan beter en vooral eenvoudiger. Het huidig systeem van afgestempelde verzendingsbewijzen is achterhaald, omslachtig en werkt fouten in de hand.</p>
             <p style="text-align:left">Dat kan beter.  We maakten daarom een toepassing die u toelaat uw brief in pdf formaat op te laden en waarbij wij de verdere stappen van het proces van aangetekende verzending afhandelen. Resultaat: tijdswinst, foutloze afhandeling en efficiënt beheer van bewijs.</p>
-            <p style="text-align:left">Daarnaast willen we nog een stap verder gaan. De EU Richtlijn 910/2014 laat toe om op legale wijze aangetekende brieven via elektronische weg te verzenden en dit vanaf 1 juli 2016. Onze technologie laat toe om tegen dan het volledig automatisch elektronische behandelen van uw aangetekende brief.
+            <p style="text-align:left">Daarnaast willen we nog een stap verder gaan. De EU Richtlijn 910/2014 laat toe om op legale wijze aangetekende brieven via elektronische weg te verzenden en dit vanaf 1 juli 2016. Onze technologie laat toe om tegen dan het verzenden van uw aangetekende brief volledig elektronisch af te handelen.
             Dit betekent een fundamenteel lagere kostprijs, een snellere afhandeling én aangetekende brieven verzenden binnen heel Europa.</p>
         </div>
     </section>
@@ -429,8 +446,9 @@
                 </div>
                 <div class="col-md-4 contact-details">
                     <h4><i class="fa fa-map-marker"></i> Visit</h4>
-                    <p>Huybrechtsstraat 76
-                        <br>2140 Borgerhout</p>
+                    <p>BVBA CEEJAY<br>
+                       Huybrechtsstraat 76<br>
+                       2140 Borgerhout</p>
                 </div>
                 <div class="col-md-4 contact-details">
                     <h4><i class="fa fa-envelope"></i> Email</h4>
@@ -474,6 +492,7 @@
     <script src="assets/js/plugins/wow/wow.min.js"></script>
     <script src="assets/js/contact_me.js"></script>
     <script src="assets/js/plugins/jqBootstrapValidation.js"></script>
+    <script src="assets/js/feedback.js"></script>
     <!-- Vitality Theme Scripts -->
     <script src="assets/js/vitality.js"></script>
     <script>
