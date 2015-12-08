@@ -107,7 +107,7 @@
         
         <div class="login-form">
             
-            <form method="post" action="login.jsp" id="login_form">
+            <form method="post" action="https://www.zendu.be/login.jsp" id="login_form">
                 <input id="email" type="text" class="login-input" placeholder=" email" name="email" tabindex="1"></input><br>
                 <input id="pass" type="password" class="login-input" placeholder=" paswoord" name="pass" tabindex="2"></input><br>            
                 <button id="login" type="submit" class="btn btn-outline-light page-scroll" tabindex="3" value="LOGIN">Login</button>
@@ -208,7 +208,7 @@
             </div>
             <div class="row content-row">
                 
-              <form id="upload" action="upload" method="post" enctype="multipart/form-data">
+              <form id="upload" action="https://www.zendu.be/upload" method="post" enctype="multipart/form-data">
                 <legend>Gegevens bestemmeling</legend>
                 <div class="form-group">             
                   <input type="text" class="form-control valid" name="destinationfirstname" id="destinationfirstname" placeholder="Voornaam" style="width:40%">
