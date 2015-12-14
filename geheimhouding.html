@@ -1,15 +1,12 @@
-<%@ page import ="java.sql.*" %>
-<%@ page import ="com.mycompany.myfileupload.Properties" %>
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Zendu | Facturen</title>
+    <meta name="description" content="Zendu Aangetekende brief">
+    <meta name="author" content="Zendu Aangetekende brieven zendingen">
+    <title>Zendu | Geheimhoudingsverklaring</title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Retina.js - Load first for faster HQ mobile images. -->
@@ -33,7 +30,6 @@
     <link href="assets/css/plugins/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins/background.css" rel="stylesheet" type="text/css">
     <link href="assets/css/plugins/animate.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/feedback.css" rel="stylesheet" type="text/css">
     <!-- Vitality Theme CSS -->
     <!-- Uncomment the color scheme you want to use. -->
     <link href="assets/css/vitality-red.css" rel="stylesheet" type="text/css">
@@ -55,31 +51,6 @@
 <!-- Alternate Body Classes: .modern and .vintage -->
 
 <body id="page-top">
-<%
-    ResultSet rs2 = null;
-    String naam = "";
-    boolean successfulPayment = false;
-    boolean testUser = false;
-
-if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("userid"))) {
-  response.sendRedirect("aangetekende-brief.jsp");
-}else{
-    String userid = (String)session.getAttribute("userid");
-    naam = (String)session.getAttribute("naam");
-
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/c9", Properties.username, Properties.password);    
-    
-    Statement st = con.createStatement();
-    ResultSet rs1;
-    rs1 = st.executeQuery("select * from Members where email='" + userid + "';");
-    
-    if (rs1.next()){
-        String memberID = rs1.getString("id");
-
-        rs2 = st.executeQuery("select * from Invoices where member_id=" + memberID + " ORDER BY id DESC;");
-    }%>
-
 
     <!-- Navigation -->
     <!-- Note: navbar-default and navbar-inverse are both supported with this theme. -->
@@ -93,7 +64,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="success.jsp">
+                <a class="navbar-brand page-scroll" href="/aangetekende-brief.jsp">
                     Zen<span style="color:firebrick">du</span>
                 </a>
             </div>
@@ -104,16 +75,16 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="profile.jsp">Welkom <%=naam%></a>
+                        <a class="page-scroll" href="profile.jsp"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="credits.jsp">Credits</a>
+                        <a class="page-scroll" href="credits.jsp"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="invoices.jsp">Facturen</a>
+                        <a class="page-scroll" href="invoices.jsp"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="aangetekende-brief.jsp">Uitloggen</a>
+                        <a class="page-scroll" href="index.jsp"></a>
                     </li>
                 </ul>
             </div>
@@ -121,42 +92,51 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
         </div>
         <!-- /.container -->
     </nav>
-    <header>
-        <div>
-            <button type="submit" class="btn btn-outline-dark" onclick="window.location.href='new.jsp'" style="position:relative;top:80px;left:80px">Nieuwe aangetekende brief</button><br><br>
-        </div>
-        
+    
+    <header style="height:1800px">
     <section id="process" class="services">
         <div class="container">        
             <div class="row content-row">
-            <legend>Overzicht van facturen</legend>
+            <legend>Geheimhoudingsverklaring</legend>
             
-            <table id="hor-minimalist-b">
-            <thead>
-              <tr>
-                <th scope="col">Factuurnummer</th>
-                <th scope="col">Omschrijving</th>
-                <th scope="col">Bedrag</th>
-                <th scope="col">Datum</th>
-                <th scope="col">Download</th>
-              </tr>
-            </thead>
-            <tbody>
-            <%while (rs2.next()){%>
-                <tr>
-                  <td style="color:black;">F<%=rs2.getInt("id")%></td>
-                  <td style="color:black;"><%=rs2.getString("title")%></td>
-                  <td style="color:black;"><%=rs2.getString("amount")%></td>
-                  <td style="color:black;"><%=rs2.getString("reg_date").substring(0,16)%></td>
-                  <td style="color:black;"><a href="documentservlet?docid=<%=rs2.getInt("id")%>&doctype=factuur" target="_blank"><img src="assets/img/ico_pdf.png" height=30px width=30px/></a></td>   
-                </tr>
-            <%}%>
-            </tbody>
-            </table>
+            
+<p><strong>Artikel 1 – Vertrouwelijke informatie</strong></p>
+<p>Onder “Vertrouwelijke Informatie” wordt verstaan, alle informatie – onder welke vorm ook die door klant aan Zendu (bvba ceejay) wordt overhandigd.
+Wordt uitdrukkelijk niet als Vertrouwelijke Informatie beschouwd, de informatie:<br>
+(i) die openbaar is gemaakt of in het publiek domein is gevallen zonder inbreuk op de bepalingen van deze overeenkomst;<br>
+(ii) die rechtmatig werd bekomen van een derde die niet is gebonden door een verplichting tot geheimhouding;<br>
+(iii) die in het kader van een geschillenregeling, van een arbitrale of gerechtelijke procedure, of overeenkomstig een wet, decreet of reglement moeten worden vrijgegeven door één van de partijen;<br>
+Alle meegedeelde Vertrouwelijke Informatie en alle eraan verbonden rechten van intellectuele en industriële eigendom blijven ten allen tijde enkel de opdrachtgever toebehoren als rechthebbende, gebruiker of eigenaar. Er wordt op generlei wijze enige technologie overgedragen door de opdrachtgever.</p>
+
+<p><strong>Artikel 2 – Behandelen van Vertrouwelijke Informatie – modaliteiten</strong></p>
+<p>
+Zendu (bvba ceejay) verbindt zich ertoe:<br>
+-	noch rechtstreeks, noch onrechtstreeks, de Vertrouwelijke Informatie of materiaal aan derden te tonen, ruchtbaar of over te maken tenzij na voorafgaande, schriftelijke toestemming van de andere partij, die deze toestemming ten alle tijde kan weigeren;<br>
+-	het nodige te doen om binnen haar eigen onderneming en binnen deze van onderaannemers en dienstverleners enkel toegang te verlenen tot de Vertrouwelijke Informatie van de andere partij aan die werknemers die de Vertrouwelijke Informatie nodig hebben om hun opdracht in het kader van de doelstellingen van deze overeenkomst tot een goed einde te brengen;<br>
+-	alle nuttige maatregelen te nemen om de naleving van deze geheimhoudingsverklaring door deze werknemers te verzekeren;<br>
+-	zich ervan te onthouden om deze Vertrouwelijke Informatie rechtstreeks of onrechtstreeks te gebruiken voor andere doeleinden dan deze vermeld in het kader van de opdracht;<br>
+-	de Vertrouwelijke Informatie te beschermen en alle nodige voorzorgen te nemen om de Vertrouwelijke Informatie te beschermen tegen diefstal, enige onrechtmatige reproductie of verspreiding;<br>
+-	alle Vertrouwelijke Informatie - na het einde van de opdracht- aan de opdrachtgever terug te bezorgen.<br>
+Zendu.be (bvba ceejay) verbindt zich ertoe de geheimhoudingsverklaring stipt na te leven en zijn personeelsleden, aangestelden en/of onderaannemers op de hoogte te brengen van de inhoud, en deze eveneens te doen naleven door hen.  Deze verklaring verbindt Zendu.be (bvba ceejay), alsook zijn huidige en toekomstige divisies, filialen en verbonden vennootschappen.
+De klant kan ten allen tijde om het even welke inlichtingen inwinnen omtrent deze verklaring bij Zendu.be (bvba ceejay) teneinde na te gaan of er geen sprake is van een inbreuk op deze verklaring.
+Bij ontdekking van een onthulling zal de andere partij onmiddellijk op de hoogte gebracht worden en onderneemt de partij bij wie de onthulling gebeurde alle nodige maatregelen om een verdere of een herhaling van de inbreuk te verhinderen.</p>
+
+<p><strong>Artikel 3 – Gebruiksbeperking</strong></p>
+<p>Ingevolge huidige geheimhoudingsverklaring kent de klant het recht toe aan de andere partij om de aan hen meegedeelde Vertrouwelijke Informatie te gebruiken in het kader van de opdracht, en enkel gedurende deze opdracht.  Dit kan niet geïnterpreteerd worden als het toekennen van enig eigendomsrecht, enig zakelijk, intellectueel of gebruiksrecht op de meegedeelde Informatie.  De meegedeelde Informatie kan niet worden aangewend voor commercieel gebruik, noch kan deze Vertrouwelijke Informatie geïncorporeerd worden in of gecombineerd worden met producten of diensten op enigerlei wijze die de eigendoms- of gebruiksrechten van de opdrachtgever schendt.
+De opdrachtnemer ziet uitdrukkelijk af van de mogelijkheid om enig recht omtrent het eigendomskarakter van de vertrouwelijke informatie aan te voeren en de informatie aan te wenden om een aanvraag te doen voor een intellectueel beschermingsrecht.</p>
+
+<p><strong>Artikel 4 – Sanctie</strong></p>
+<p>In geval van niet naleving van één of meer verplichtingen voorzien in onderhavige verklaring, zal Zendu.be gehouden zijn om de eventuele schade te vergoeden.</p>
+
+<p><strong>Artikel 5 – Geschillen – Bevoegdheid</strong></p>
+<p>De Belgische wet is van toepassing op huidige verklaring.
+Vooraleer een dispuut aan een rechtbank voor te leggen, verbinden partijen er zich toe te goeder trouw en met inachtname van de redelijke belangen van de andere partij te onderhandelen met het oog op een minnelijke regeling.
+Indien een geschil toch aan een rechtbank wordt voorgelegd, dan valt dit onder de bevoegdheid van de rechtbank van Antwerpen.</p>
+
         </div>
         </div>
     </section>
-
+        
         <div class="intro-content">
             <br>
 
@@ -173,22 +153,6 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
         <div class="scroll-down">
             <a class="btn page-scroll" href="#about"><i class="fa fa-angle-down fa-fw"></i></a>
         </div>
-        
-        <div id="feedback">
-        	<div id="feedback-form" style='display:none;' class="col-xs-4 col-md-4 panel panel-default">
-        		<form method="POST" action="/feedback" class="form panel-body" role="form">
-        			<div class="form-group">
-        				<input class="form-control" name="email" autofocus placeholder="Uw e-mail (optioneel)" type="email" />
-        				<input name="screen" type="hidden" value="invoices.jsp"/>
-        			</div>
-        			<div class="form-group">
-        				<textarea class="form-control" name="body" required placeholder="Graag uw feedback hier ..." rows="5"></textarea>
-        			</div>
-        			<button class="btn btn-primary pull-right" type="submit">Verzend</button>
-        		</form>
-        	</div>
-        	<div id="feedback-tab">Feedback</div>
-        </div>
     </header>
 
     <footer class="footer" style="background-image: url('assets/img/bg-footer.jpg')">
@@ -200,13 +164,12 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
                 </div>
                 <div class="col-md-4 contact-details">
                     <h4><i class="fa fa-map-marker"></i> Visit</h4>
-                    <p>BVBA CEEJAY<br>
-                       Huybrechtsstraat 76
+                    <p>Huybrechtsstraat 76
                         <br>2140 Borgerhout</p>
                 </div>
                 <div class="col-md-4 contact-details">
                     <h4><i class="fa fa-envelope"></i> Email</h4>
-                    <p><a href="mailto:mail@example.com">info@zendu.be</a>
+                    <p><a href="mailto:mail@example.com">jan@zendu.be</a>
                     </p>
                 </div>
             </div>
@@ -225,7 +188,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
             <div class="row copyright">
                 <div class="col-lg-12">
                     <p class="small">&copy; 2015 Zendu.be Aangetekende brieven</p>
-                    <p class="small"><a href="disclaimer.html">Disclaimer</a> &nbsp &nbsp <a href="cookies.html">Cookies Policy</a> &nbsp &nbsp <a href="geheimhouding.html">Geheimhoudingsverklaring</a></p>
+                    <p class="small"><a href="disclaimer.html">Disclaimer</a> &nbsp &nbsp <a href="cookies.html">Cookies Policy</a></p>
                 </div>
             </div>
         </div>
@@ -249,7 +212,6 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
     <script src="assets/js/plugins/jqBootstrapValidation.js"></script>
     <!-- Vitality Theme Scripts -->
     <script src="assets/js/vitality.js"></script>
-    <%}%>
 </body>
 
 </html>

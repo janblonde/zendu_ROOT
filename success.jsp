@@ -300,7 +300,7 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
             <div class="row copyright">
                 <div class="col-lg-12">
                     <p class="small">&copy; 2015 Zendu.be Aangetekende brieven</p>
-                    <p class="small"><a href="disclaimer.html">Disclaimer</a> &nbsp &nbsp <a href="cookies.html">Cookies Policy</a></p>
+                    <p class="small"><a href="disclaimer.html">Disclaimer</a> &nbsp &nbsp <a href="cookies.html">Cookies Policy</a> &nbsp &nbsp <a href="geheimhouding.html">Geheimhoudingsverklaring</a></p>
                 </div>
             </div>
         </div>
