@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@page contentType="text/html; charset=UTF-8" %>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -472,6 +472,7 @@
                 <div class="col-lg-12">
                     <p class="small">&copy; 2015 Zendu.be Aangetekende brieven</p>
                     <p class="small"><a href="disclaimer.html">Disclaimer</a> &nbsp &nbsp <a href="cookies.html">Cookies Policy</a> &nbsp &nbsp <a href="geheimhouding.html">Geheimhoudingsverklaring</a></p>
+                    <img src="https://www.linkedin.com/profile/view?authToken=zRgB&authType=name&id=AAIAAADm-1sBm8NoA7CQmlDLKmclhk_7dL2OuW8"/>
                 </div>
             </div>
         </div>
