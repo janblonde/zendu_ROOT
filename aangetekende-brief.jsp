@@ -457,13 +457,23 @@
                 </div>
             </div>
             <div class="row social">
+                <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
                 <div class="col-lg-12">
                     <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin fa-fw fa-2x"></i></a>
+                        <li><div style="vertical-align: super;" class="fb-like" data-href="http://www.zendu.be" data-width="500" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+                        </li>&nbsp
+                        <li><a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://www.zendu.be" data-text="Digitaal aangetekende brieven verzenden via www.zendu.be #zendu" data-size="large">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                        </li>&nbsp
+                        <li><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="www.zendu.be" data-counter="top"></script>
                         </li>
                     </ul>
                 </div>
