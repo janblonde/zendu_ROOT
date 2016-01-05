@@ -121,7 +121,7 @@
     
         <div class="getstarted-form">
             
-        <form><a class="page-scroll login-btn" href="#brief">Start gratis</a>
+        <form><a class="page-scroll login-btn" href="#brief">Starten</a>
         </form>
         </div>
         
@@ -158,8 +158,8 @@
                 <div class="col-md-3 col-sm-6 wow fadeIn" data-wow-delay=".2s">
                     <div class="about-content">
                         <i class="fa fa-edit fa-4x"></i>
-                        <h3>U schrijft de brief en laadt hem op op de website.</h3>
-                        <p style="text-align: left;">Opladen kan eenvoudig op de website: de eerste keer gratis, daarna na inloggen met uw e-mail en paswoord. <br>Door te werken met PDF-formaat kunnen we garanderen dat de brief correct wordt afgedrukt.</p>
+                        <h3>U schrijft de brief en laadt hem op als PDF op de website.</h3>
+                        <p style="text-align: left;">U ontvangt automatisch een factuur zodra de brief is opgeladen en nadat u hebt betaald (via BC/MC, Visa, Maestro).</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 wow fadeIn" data-wow-delay=".4s">
@@ -192,7 +192,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <span class="quote"><span class="text-primary">"Legaal</span> verzenden en beheren van aangetekende brieven was nog nooit zo <span class="text-primary">eenvoudig.</span>"</span>
                     <hr class=" colored">
-                    <a class="btn btn-outline-light page-scroll" href="#brief">Gratis starten</a>
+                    <a class="btn btn-outline-light page-scroll" href="#brief">starten</a>
                 </div>
             </div>
         </div>
@@ -203,12 +203,13 @@
                 <div class="col-lg-12 wow fadeIn">
                     <h2>starten</h2>
                     <hr class="colored">
-                    <p>Probeer het uit en verzend 1 gratis aangetekende brief.</p>
+                    <p>Verzend hier uw aangetekende brief en maak automatisch een account aan.</p>
                 </div>
             </div>
             <div class="row content-row">
                 
               <form id="upload" action="https://www.zendu.be/upload" method="post" enctype="multipart/form-data">
+              <!--REMOVE <form id="upload" action="/upload" method="post" enctype="multipart/form-data">-->
                 <legend>Gegevens bestemmeling</legend>
                 <div class="form-group">             
                   <input type="text" class="form-control valid" name="destinationfirstname" id="destinationfirstname" placeholder="Voornaam" style="width:40%">
@@ -289,7 +290,7 @@
                 </div>
                 <div id="success_test"></div>
                 <div class="form-group">
-                  <input id="payment_test" type="submit" class="btn btn-lg btn-default" value="verzenden"/>
+                  <input id="payment_test" type="submit" class="btn btn-lg btn-default" value="verzenden en betalen" onclick="ga('send','event','button','click','home_form')"/>
                   <a id="closebutton" class="btn btn-lg btn-default">Cancel</a><br>
                 </div>
               </form>
@@ -326,7 +327,6 @@
                             <li class="list-group-item">1 individuele brief</li>
                             <li class="list-group-item">Maximum 10 pagina's</li>
                             <li class="list-group-item">Opgeladen voor 15u00, dezelfde dag aangetekend verzonden</li>
-                            <li class="list-group-item">Uw eerste aangetekende brief is gratis</li>
                         </ul>
                         <a href="#brief" class="btn btn-outline-dark">Starten</a>
                     </div>
