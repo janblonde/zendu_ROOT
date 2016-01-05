@@ -88,12 +88,12 @@ if (null == (session.getAttribute("userid")) || ("" == session.getAttribute("use
         myMail.setMessage("We verzenden de brief zo snel mogelijk aangetekend. U vindt de door u opgeladen brief als bijlage bij deze e-mail.");
         String returnMessage = myMail.getMessage();
         
-        //AmazonSESAttachment mailer = new AmazonSESAttachment();
-        //mailer.setTO(userid);
-        //mailer.setBODY("We verzenden de brief zo snel mogelijk aangetekend. U vindt de door u opgeladen brief als bijlage bij deze e-mail.");
-        //mailer.setSUBJECT("Uw brief werd succesvol opgeladen op Zendu.be");
-        //mailer.setFileName("brieven"+request.getParameter("orderID")+".pdf");
-        //mailer.sendMessage();
+        //notification
+        SendFileEmail mailer = new SendFileEmail();
+        mailer.setMailTo("jan.blonde@icloud.com");
+        mailer.setMessage("NOTIFICATION: nieuwe Zendu brief!");
+        mailer.setSubject("NOTIFICATION: nieuwe Zendu brief!");
+        mailer.getMessage();
         
         //generate invoice
         GenerateInvoice generator = new GenerateInvoice();

@@ -320,7 +320,7 @@
     	else{
             $('#success_test').html("<div class='alert alert-success'>");
             $('#success_test > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-            $('#success_test > .alert-success').append("<img height='20px' width='20px' src='assets/img/loader.gif'/><strong> Even geduld, ww brief wordt opgeladen.</strong>");
+            $('#success_test > .alert-success').append("<img height='20px' width='20px' src='assets/img/loader.gif'/><strong> Even geduld, ww brief wordt opgeladen en daarna wordt u doorgezonden naar de betaalpagina.</strong>");
             $('#success_test > .alert-success').append('</div>');
     	}
 
