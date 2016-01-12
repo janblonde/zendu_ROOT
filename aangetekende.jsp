@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="Aangetekende brief">
     <meta name="author" content="Zendu Aangetekende brieven versturen">
@@ -56,7 +57,7 @@
 <body id="page-top">
     <!-- Navigation -->
     <!-- Note: navbar-default and navbar-inverse are both supported with this theme. -->
-    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expanded">
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expanded" style="background-color:black;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -66,7 +67,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+                <a class="navbar-brand page-scroll" href="#page-top" style="font-size:48px;">
                     Zen<span style="color:firebrick">du</span>
                 </a>
             </div>
@@ -97,6 +98,95 @@
         </div>
         <!-- /.container -->
     </nav>
+    <section id="brief" class="services" style="background-color:black;color:white;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-12 wow fadeIn">
+                    <h2>Verzend hier uw aangetekende brief</h2>
+                    <!--<hr class="colored">
+                    <p>Verzend hier uw aangetekende brief en maak automatisch een account aan.</p>-->
+                </div>
+            </div>
+            <div class="row content-row">
+                
+              <form id="upload" action="https://www.zendu.be/upload" method="post" enctype="multipart/form-data">
+              <!--REMOVE <form id="upload" action="/upload" method="post" enctype="multipart/form-data">-->
+                <legend>Gegevens bestemmeling</legend>
+                <div class="form-group">             
+                  <input type="text" class="form-control valid" name="destinationfirstname" id="destinationfirstname" placeholder="Voornaam" style="width:25%;display:inline">
+                  <input type="text" class="form-control required" name="destinationlastname" id="destinationlastname" placeholder="Naam" style="width:35%;display:inline">
+                  <span class="error">Dit is een verplicht veld</span>
+                  <input type="text" class="form-control valid" name="destinationcompany" id="destinationcompany" placeholder="Bedrijf" style="width:30%;display:inline">
+                </div>
+                <div class="form-group">              
+                  <input type="text" class="form-control required" name="destinationstreetname" id="destinationstreetname" placeholder="Straatnaam"style="width:70%;display:inline">
+                  <span class="error">Dit is een verplicht veld</span>
+                  <input type="text" class="form-control required" name="destinationstreetnumber" id="destinationstreetnumber" placeholder="Straatnummer" style="width:15%;display:inline">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">              
+                  <input type="text" class="form-control required" name="destinationzipcode" id="destinationzipcode" placeholder="Postcode" style="width:20%;display:inline">
+                  <span class="error">Dit is een verplicht veld</span>
+                  <input type="text" class="form-control required" name="destinationcity" id="destinationcity" placeholder="Stad" style="width:40%;display:inline">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <legend>Te verzenden brief - laad hier uw PDF document op.</legend>
+                <div class="form-group">
+                  <input id="file" name="file" type="file" class="file" accept="application/pdf">
+                  <span class="error"><br>Gelieve een PDF document op te laden<br>Dus graag uw document eerst opslaan in PDF formaat en het dan opladen op de website via bovenstaande knop.</span>
+                </div>
+                <legend>Uw gegevens</legend>
+                <div class="form-group">             
+                  <input type="text" class="form-control valid" name="senderfirstname" id="senderfirstname" placeholder="Voornaam" style="width:40%">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control required" name="senderlastname" id="senderlastname" placeholder="Naam" style="width:40%">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">             
+                  <input type="text" class="form-control valid" name="sendercompany" id="sendercompany" placeholder="Bedrijf" style="width:40%">
+                </div>
+                <div class="form-group">             
+                  <input type="text" class="form-control valid" name="sendervat" id="sendervat" placeholder="BTW-nummer" style="width:40%">
+                </div>
+                <div class="form-group">              
+                  <input type="text" class="form-control required" name="senderstreetname" id="senderstreetname" placeholder="Straatnaam" style="width:70%">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">              
+                  <input type="text" class="form-control required" name="senderstreetnumber" id="senderstreetnumber" placeholder="Straatnummer" style="width:15%">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">              
+                  <input type="text" class="form-control required" name="senderzipcode" id="senderzipcode" placeholder="Postcode" style="width:20%">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control required" name="sendercity" id="sendercity" placeholder="Stad" style="width:40%">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">
+                  <input id="senderemail" type="email" class="form-control required" name="senderemail" placeholder="E-mail adres" style="width:40%">
+                  <span class="error">Gelieve een geldig email adres in te geven</span>
+                  <p class="error"><br>Dit e-mail adres is reeds geregistreerd. <br>Kies een ander e-mail adres of login hierboven. </p>
+                </div>
+                <div class="form-group">
+                  <input id="senderpassword" type="password" class="form-control required" name="senderpassword" placeholder="Kies een paswoord">
+                  <span class="error">Dit is een verplicht veld</span>
+                </div>
+                <div class="form-group">
+                  <input id="senderpasswordcheck" type="password" class="form-control required valid" name="senderpasswordcheck" placeholder="Herhaal het paswoord">
+                  <p class="error"><br>De door u ingevulde paswoorden verschillen. Graag even nakijken aub.</p>
+                </div>
+                <div id="success_test"></div>
+                <div class="form-group">
+                  <input id="payment_test" type="submit" class="btn btn-lg btn-default" value="verzenden en betalen" onclick="ga('send','event','button','click','home_form')"/>
+                  <a id="closebutton" class="btn btn-lg btn-default">Cancel</a><br>
+                </div>
+              </form>
+            </div>
+        </div>
+    </section>
     <header style="background-image: url('assets/img/bg-header.jpg');">
         <div class="intro-content">
 <!--            <img src="assets/img/profile.png" class="img-responsive img-centered" alt="">-->
@@ -108,7 +198,6 @@
         <div class="login-form">
             
             <form method="post" action="https://www.zendu.be/login.jsp" id="login_form">
-            <!-- REMOVE <form method="post" action="https://java-tomcat-janblonde.c9.io/login.jsp" id="login_form">-->
                 <input id="email" type="text" class="login-input" placeholder=" email" name="email" tabindex="1"></input><br>
                 <input id="pass" type="password" class="login-input" placeholder=" paswoord" name="pass" tabindex="2"></input><br>            
                 <button id="login" type="submit" class="btn btn-outline-light page-scroll" tabindex="3" value="LOGIN">Login</button>
@@ -198,107 +287,6 @@
             </div>
         </div>
     </aside>
-    <section id="brief" class="services">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-12 wow fadeIn">
-                    <h2>starten</h2>
-                    <hr class="colored">
-                    <p>Verzend hier uw aangetekende brief en maak automatisch een account aan.</p>
-                </div>
-            </div>
-            <div class="row content-row">
-                
-              <form id="upload" action="https://www.zendu.be/upload" method="post" enctype="multipart/form-data">
-              <!--REMOVE <form id="upload" action="/upload" method="post" enctype="multipart/form-data">-->
-                <legend>Gegevens bestemmeling</legend>
-                <div class="form-group">             
-                  <input type="text" class="form-control valid" name="destinationfirstname" id="destinationfirstname" placeholder="Voornaam" style="width:40%">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control required" name="destinationlastname" id="destinationlastname" placeholder="Naam" style="width:40%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">             
-                  <input type="text" class="form-control valid" name="destinationcompany" id="destinationcompany" placeholder="Bedrijf" style="width:40%">
-                </div>
-                <div class="form-group">              
-                  <input type="text" class="form-control required" name="destinationstreetname" id="destinationstreetname" placeholder="Straatnaam"style="width:70%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">              
-                  <input type="text" class="form-control required" name="destinationstreetnumber" id="destinationstreetnumber" placeholder="Straatnummer" style="width:15%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">              
-                  <input type="text" class="form-control required" name="destinationzipcode" id="destinationzipcode" placeholder="Postcode" style="width:20%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control required" name="destinationcity" id="destinationcity" placeholder="Stad" style="width:40%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control valid" name="destinationEmail" id="destinationEmail" placeholder="E-mail adres" style="width:40%">
-                </div>
-                <legend>Te verzenden brief - laad hier uw PDF document op.</legend>
-                <div class="form-group">
-                  <input id="file" name="file" type="file" class="file" accept="application/pdf">
-                  <span class="error"><br>Gelieve een PDF document op te laden<br>Dus graag uw document eerst opslaan in PDF formaat en het dan opladen op de website via bovenstaande knop.</span>
-                </div>
-                <legend>Uw gegevens</legend>
-                <div class="form-group">             
-                  <input type="text" class="form-control valid" name="senderfirstname" id="senderfirstname" placeholder="Voornaam" style="width:40%">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control required" name="senderlastname" id="senderlastname" placeholder="Naam" style="width:40%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">             
-                  <input type="text" class="form-control valid" name="sendercompany" id="sendercompany" placeholder="Bedrijf" style="width:40%">
-                </div>
-                <div class="form-group">             
-                  <input type="text" class="form-control valid" name="sendervat" id="sendervat" placeholder="BTW-nummer" style="width:40%">
-                </div>
-                <div class="form-group">              
-                  <input type="text" class="form-control required" name="senderstreetname" id="senderstreetname" placeholder="Straatnaam" style="width:70%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">              
-                  <input type="text" class="form-control required" name="senderstreetnumber" id="senderstreetnumber" placeholder="Straatnummer" style="width:15%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">              
-                  <input type="text" class="form-control required" name="senderzipcode" id="senderzipcode" placeholder="Postcode" style="width:20%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control required" name="sendercity" id="sendercity" placeholder="Stad" style="width:40%">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">
-                  <input id="senderemail" type="email" class="form-control required" name="senderemail" placeholder="E-mail adres" style="width:40%">
-                  <span class="error">Gelieve een geldig email adres in te geven</span>
-                  <p class="error"><br>Dit e-mail adres is reeds geregistreerd. <br>Kies een ander e-mail adres of login hierboven. </p>
-                </div>
-                <div class="form-group">
-                  <input id="senderpassword" type="password" class="form-control required" name="senderpassword" placeholder="Kies een paswoord">
-                  <span class="error">Dit is een verplicht veld</span>
-                </div>
-                <div class="form-group">
-                  <input id="senderpasswordcheck" type="password" class="form-control required valid" name="senderpasswordcheck" placeholder="Herhaal het paswoord">
-                  <p class="error"><br>De door u ingevulde paswoorden verschillen. Graag even nakijken aub.</p>
-                </div>
-                <div id="success_test"></div>
-                <div class="form-group">
-                  <input id="payment_test" type="submit" class="btn btn-lg btn-default" value="verzenden en betalen" onclick="ga('send','event','button','click','home_form')"/>
-                  <!--REMOVE <input id="payment_test" type="submit" class="btn btn-lg btn-default" value="verzenden en betalen"/>-->
-                  <a id="closebutton" class="btn btn-lg btn-default">Cancel</a><br>
-                </div>
-              </form>
-            </div>
-        </div>
-    </section>
     <section id="verzenden" class="bg-gray">
         <div class="container text-center wow fadeIn">
             <h2>Over ons</h2>
@@ -484,6 +472,7 @@
                 <div class="col-lg-12">
                     <p class="small">&copy; 2015 Zendu.be Aangetekende brieven</p>
                     <p class="small"><a href="disclaimer.html">Disclaimer</a> &nbsp &nbsp <a href="cookies.html">Cookies Policy</a> &nbsp &nbsp <a href="geheimhouding.html">Geheimhoudingsverklaring</a></p>
+                    <img src="https://www.linkedin.com/profile/view?authToken=zRgB&authType=name&id=AAIAAADm-1sBm8NoA7CQmlDLKmclhk_7dL2OuW8"/>
                 </div>
             </div>
         </div>
@@ -507,7 +496,6 @@
     <script src="assets/js/feedback.js"></script>
     <!-- Vitality Theme Scripts -->
     <script src="assets/js/vitality.js"></script>
-    <!-- REMOVE -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

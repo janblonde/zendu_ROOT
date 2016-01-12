@@ -113,7 +113,7 @@ if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") 
         CreatePaymentRequest.myHouseNumber = streetnumber;
         CreatePaymentRequest.myPostalCode = zipcode;
         CreatePaymentRequest.myCity = city;
-        CreatePaymentRequest.myAmount = "82000";
+        CreatePaymentRequest.myAmount = "72000";
     
         SOAPresponse = CreatePaymentRequest.makeCall();
     }
