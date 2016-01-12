@@ -324,7 +324,7 @@
                     <div class="pricing-item featured-first">
                         <h3>Basic</h3>
                         <hr class="colored">
-                        <div class="price"><span class="number">9.80<sup>&euro;</sup></span> / brief</div>
+                        <div class="price"><span class="number">8.50<sup>&euro;</sup></span> / brief</div>
                         <ul class="list-group">
                             <li class="list-group-item">1 individuele brief</li>
                             <li class="list-group-item">Maximum 10 pagina's</li>
@@ -337,10 +337,10 @@
                     <div class="pricing-item featured">
                         <h3>Plus</h3>
                         <hr class="colored">
-                        <div class="price"><span class="number">8.80<sup>&euro;</sup></span> / brief</div>
+                        <div class="price"><span class="number">7.50<sup>&euro;</sup></span> / brief</div>
                         <ul class="list-group">
                             <li class="list-group-item">Pakket van <strong>10</strong> brieven</li>
-                            <li class="list-group-item">Totaal: 88 &euro;, inc. BTW</li>
+                            <li class="list-group-item">Totaal: 75 &euro;, inc. BTW</li>
                             <li class="list-group-item">Opgeladen voor 15u00, dezelfde dag aangetekend verzonden</li>
                         </ul>
                         <a href="#" class="btn btn-outline-dark">Log in om te bestellen</a>
@@ -350,10 +350,10 @@
                     <div class="pricing-item featured-last">
                         <h3>Premium</h3>
                         <hr class="colored">
-                        <div class="price"><span class="number">8.50<sup>&euro;</sup></span> / brief</div>
+                        <div class="price"><span class="number">7.20<sup>&euro;</sup></span> / brief</div>
                         <ul class="list-group">
                             <li class="list-group-item">Pakket van 50 brieven</li>
-                            <li class="list-group-item">Totaal: 425 &euro;, inc. BTW</li>
+                            <li class="list-group-item">Totaal: 360 &euro;, inc. BTW</li>
                             <li class="list-group-item">Opgeladen voor 15u00, dezelfde dag aangetekend verzonden</li>
                         </ul>
                         <a href="#" class="btn btn-outline-dark">Log in om te bestellen</a>
